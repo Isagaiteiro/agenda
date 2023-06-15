@@ -14,18 +14,42 @@
                 <tr>
                     <th scope="col">Nome do Usuário</th>
                     <th scope="col">E-mail</th>
-                    <th scope="col">Ações</th>
+                    <th scope="col">
+                        <form method="GET" action="{% url 'formulario_usuario'%}">
+                            <button type="submit" class="">
+                                Novo Usuário
+                            </button>
+                    </th>
                 </tr>
                 <tbody>
                     {% for usuario in usuarios %}
                     <tr>
-                        <th scope="row">{{usuario.nome}}</th>
-                        <th scope="row">{{usuario.email}}</th>
-                        <th scope="row"></th>
-
+                        <td>{{usuario.nome}}</td>
+                        <td>{{usuario.email}}</td>
+                        <td style="width: 85px">
+                            <form method="POST" action="{% url 'excluir_usuario' usuario.id %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit" class="" onclick="return confirm('Deseja realmente excluir esse usuário?')">
+                                    Excluir
+                                </button>
+                            </form>
+                        </td>
+                        <td style="width: 85px">
+                            <form method="GET" action="{% url 'exibir_usuario' usuario.id %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="_method" value="EDIT">
+                                <button type="submit" class="">
+                                    Editar
+                                </button>
+                            </form>
+                        </td>
+                        
                     </tr>
                     {% empty %}
-                        <p>Nenhum usuário cadastrado.</p>
+                    <tr>
+                        <td colspan="3">Nenhum usuário cadastrado.</td>
+                    </tr>
                     {% endfor %}
                 </tbody>
             </thead>

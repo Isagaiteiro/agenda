@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Novo Usuário</title>
+    <title>Editar Usuário</title>
 </head>
 <body>
-    <h1>Novo Usuário</h1>
-    <form method="POST" action="{% url 'criar_usuario'%}">
+    <h1>Editar Usuário</h1>
+    <form method="POST" action="{% url 'atualizar_usuario' user.id %}">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Salvar</button>
