@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="mt-5 p-5">Todos os Usuários</h1>
+
+    <table class="table table-striped mt-5 p-5">
+      
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Nome do Usuário</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Ações</th>
+                </tr>
+                <tbody>
+                    {% for usuario in usuarios %}
+                    <tr>
+                        <th scope="row">{{usuario.nome}}</th>
+                        <th scope="row">{{usuario.email}}</th>
+                        <th scope="row"></th>
+
+                    </tr>
+                    {% empty %}
+                        <p>Nenhum usuário cadastrado.</p>
+                    {% endfor %}
+                </tbody>
+            </thead>
+    </table>
+    
+</body>
+</html>
+
+    

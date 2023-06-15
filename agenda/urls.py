@@ -17,7 +17,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from app.views import index, create_user, formulario_tarefa, list_users, update_user, delete_user
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index/', include('app.urls')),
+    path('', index, name='home'),
+    path('users/create/', create_user, name='criar_usuario'),
+    path('users/', list_users, name='listar_usuarios'),
+    path('usuarios/<int:pk>/atualizar/', update_user, name='atualizar_usuario'),
+    path('usuarios/<int:pk>/excluir/', delete_user, name='excluir_usuario'),
+    path('tarefa/cadastro', formulario_tarefa, name='Cadastro Tarefa'),
+
+    
 ]

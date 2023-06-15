@@ -1,0 +1,11 @@
+<!-- tarefa_model_form.html -->
+<h1>Formulários de Cadastro de Tarefa</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ tarefa_form.as_p }}
+        <input type="submit" value="Salvar Tarefa">
+    </form>
+
+
+
